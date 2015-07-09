@@ -1,6 +1,6 @@
 %head
   %title 
-    Picturegram
+    picturegram
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
@@ -8,7 +8,10 @@
 %body
   #main-nav
     %h2.text-center
-      Picturegram
+      picture
+      %i.fa.fa-camera
+      %span.heavy_weight
+        gram
     .pull-right#add_post
       =link_to "Add a Post", new_post_path, :class => 'btn btn-primary'
   .content.col-md-6.col-md-push-3

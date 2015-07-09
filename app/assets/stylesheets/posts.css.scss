@@ -2,8 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,400,200);
+
 body {
+  h2, .raleway{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+  }
+  .heavy_weight {
+    font-weight: 400;
+  }
+  .raleway {
+    font-size: 15px;
+  }
   background-color: #E4E7E9 !important;
+  i {
+    margin-left: -7px;
+    margin-right: -7px;
+  }
 }
 #main-nav {
   position: fixed;
@@ -32,6 +48,7 @@ body {
   .post_image{
     img{
       width: 90%;
+      margin-bottom: 5px;
     }
   }
 }
