@@ -9,7 +9,7 @@ feature 'Posts' do
     end
   end
 
-  context 'there are posts' do
+  xcontext 'there are posts' do
     before do
       Post.create(message: 'Hogwarts Express! (Glenfinnan viaduct)', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"))
     end
@@ -19,6 +19,23 @@ feature 'Posts' do
       expect(page).to have_content 'Hogwarts Express'
       expect(page).not_to have_content 'No posts yet.'
       expect(page).to have_selector 'img'
+    end
+  end
+
+  context 'adding posts' do
+    scenario 'visiting new post page' do
+      visit '/'
+      click_link 'Add a Post'
+      expect(page).to have_content 'Upload new photo'
+    end
+
+    scenario 'uploading new post' do
+      visit new_post_path
+      attach_file 'Upload new photo', 'spec/fixtures/glenfinnan.jpg'
+      fill_in 'Say some words', with: 'Hogwarts Express. Choo choo!'
+      click_button 'Create Post'
+      expect(page).to have_selector 'img'
+      expect(page).to have_content 'Choo choo!'
     end
   end
 end
