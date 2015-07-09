@@ -1,8 +1,8 @@
-=link_to "Add a Post", new_post_path
-
 -if @posts.any?
   -@posts.each do |post|
-    =post.message
-    =image_tag(post.image.url(:large))
+    .post_display.text-center
+      .post_image.col-md-12=image_tag(post.image.url(:large))
+      %br
+      .post_message=post.message
 -else
   %h3 No posts yet.
