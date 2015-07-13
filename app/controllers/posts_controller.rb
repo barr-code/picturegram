@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to posts_path, notice: 'Post was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'Success!' }
       else
         format.html { render :edit }
       end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Poof! That post is history.' }
       format.json { head :no_content }
     end
   end

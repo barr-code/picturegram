@@ -12,7 +12,14 @@
         picture
         %i.fa.fa-camera
         gram
-    .pull-right#add_post
-      =link_to "Add a Post", new_post_path, :class => 'btn btn-primary'
+    .pull-right.nav-buttons
+      -if user_signed_in?
+        =link_to "Add a Post", new_post_path, :class => 'btn btn-primary'
+        =link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'btn btn-primary'
+      -else
+        =link_to "Sign In", new_user_session_path, :class => 'btn btn-primary'
+        =link_to "Sign Up", new_user_registration_path, :class => 'btn btn-primary'
   .content.col-md-6.col-md-push-3
+    %p.notice= notice
+    %p.alert= alert
     = yield
