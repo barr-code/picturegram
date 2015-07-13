@@ -48,7 +48,16 @@ feature 'Posts' do
       visit '/'
       click_link 'Delete'
       expect(page).not_to have_content 'Hogwarts Express'
+      expect(page).not_to have_selector 'img'
     end
 
+    scenario 'editing message' do
+      visit '/'
+      click_link 'Edit'
+      fill_in 'Say some words', with: 'Ferroequinology'
+      click_button 'Post It!'
+      expect(page).not_to have_content 'Hogwarts Express'
+      expect(page).to have_content 'Ferroequinology'
+    end
   end
 end
