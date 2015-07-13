@@ -16,10 +16,6 @@ body {
     font-size: 15px;
   }
   background-color: #E4E7E9 !important;
-  i {
-    margin-left: -7px;
-    margin-right: -7px;
-  }
 }
 #main-nav {
   position: fixed;
@@ -41,6 +37,10 @@ body {
   #home_button:hover{
     text-decoration: none;
   }
+  i {
+    margin-left: -7px;
+    margin-right: -7px;
+  }
 }
 
 .content{
@@ -56,5 +56,8 @@ body {
       width: 90%;
       margin-bottom: 5px;
     }
+  }
+  .post_buttons, .post_message{
+    display: inline-block;
   }
 }

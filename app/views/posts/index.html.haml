@@ -4,7 +4,10 @@
       .post_image.col-md-12=image_tag(post.image.url(:large))
       %br
       .post_message.raleway=post.message
-      .delete_post.raleway= link_to 'Delete', post_path(post), method: :delete
-      .edit_post.raleway= link_to 'Edit', edit_post_path(post)
+      .post_buttons
+        =link_to edit_post_path(post) do
+          %i.fa.fa-pencil
+        =link_to post_path(post), method: :delete do
+          %i.fa.fa-trash
 -else
   %h3 No posts yet.
