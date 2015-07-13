@@ -1,5 +1,17 @@
-## Picturegram
+## Picturegram (WIP)
 
-An attempt at making a more sophisticated version of my earlier Instagram clone, [Instachegram](https://github.com/barr-code/instachegram).
+An Instagram clone. For uploading and sharing images from the web.
 
+####The Tools
+```
+- Ruby on Rails
+- MySQL
+- RSpec/Capybara
+- HTML5
+- CSS
+- Bootstrap
+- Javascript/jQuery
+```
+
+#### Feast Your Eyes
 ![alt tag](./app/screenshots/picturegram.jpg)
