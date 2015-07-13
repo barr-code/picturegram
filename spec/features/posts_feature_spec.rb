@@ -38,4 +38,17 @@ feature 'Posts' do
       expect(page).to have_content 'Choo choo!'
     end
   end
+
+  context 'editing/deleting posts' do
+    before do
+      Post.create(message: 'Hogwarts Express! (Glenfinnan viaduct)', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"))
+    end
+
+    scenario 'deleting a post' do
+      visit '/'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Hogwarts Express'
+    end
+
+  end
 end

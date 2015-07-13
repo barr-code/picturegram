@@ -4,5 +4,6 @@
       .post_image.col-md-12=image_tag(post.image.url(:large))
       %br
       .post_message.raleway=post.message
+      .delete_post.raleway= link_to 'Delete', post_path(post), method: :delete
 -else
   %h3 No posts yet.
