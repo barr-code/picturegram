@@ -1,6 +1,11 @@
 require 'rails_helper'
+require_relative '../helpers/user_helper'
 
 feature 'Posts' do
+  before do
+    sign_up
+  end
+
   context 'there are no posts' do
     scenario 'should invite user to add a post' do
       visit '/'
@@ -46,14 +51,14 @@ feature 'Posts' do
 
     scenario 'deleting a post' do
       visit '/'
-      click_link 'Delete'
+      page.find('.delete-button').click
       expect(page).not_to have_content 'Hogwarts Express'
       expect(page).not_to have_selector 'img'
     end
 
     scenario 'editing message' do
       visit '/'
-      click_link 'Edit'
+      page.find('.edit-button').click
       fill_in 'Say some words', with: 'Ferroequinology'
       click_button 'Post It!'
       expect(page).not_to have_content 'Hogwarts Express'

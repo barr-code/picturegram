@@ -5,9 +5,9 @@
       %br
       .post_message.raleway=post.message
       .post_buttons
-        =link_to edit_post_path(post) do
+        =link_to edit_post_path(post), class: "edit-button" do
           %i.fa.fa-pencil
-        =link_to post_path(post), method: :delete do
+        =link_to post_path(post), method: :delete, class: "delete-button" do
           %i.fa.fa-trash
 -else
   %h3 No posts yet.
