@@ -46,7 +46,7 @@ feature 'Posts' do
 
   context 'editing/deleting posts' do
     before do
-      Post.create(message: 'Hogwarts Express! (Glenfinnan viaduct)', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"))
+      create_post
     end
 
     scenario 'deleting a post' do

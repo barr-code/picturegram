@@ -17,8 +17,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
+    if current_user
+      @post = Post.new(post_params)
+      @post.user_id = current_user.id
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
