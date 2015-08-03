@@ -28,4 +28,9 @@ context "users' posts" do
     visit '/'
     expect(page).not_to have_link 'Add a Post'
   end
+
+  it 'must be signed in to add post' do
+    visit new_post_path
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  end
 end
