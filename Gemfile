@@ -32,6 +32,8 @@ gem 'spring',        group: :development
 
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
+gem 'selenium-webdriver', group: :test
+gem 'database_cleaner', group: :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

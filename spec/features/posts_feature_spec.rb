@@ -44,7 +44,7 @@ feature 'Posts' do
     end
   end
 
-  context 'editing/deleting posts' do
+  context 'editing/deleting/liking posts' do
     before do
       create_post
     end
@@ -63,6 +63,11 @@ feature 'Posts' do
       click_button 'Post It!'
       expect(page).not_to have_content 'Hogwarts Express'
       expect(page).to have_content 'Ferroequinology'
+    end
+
+    scenario 'liking post', :js => true do
+      visit '/'
+      expect(lambda{page.find('.add-like').click}).to change{Like.count}.by 1
     end
   end
 end
