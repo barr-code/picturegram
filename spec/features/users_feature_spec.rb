@@ -21,6 +21,11 @@ context 'a user is signed in' do
     expect(page).not_to have_link 'Sign Up'
     expect(page).not_to have_link 'Sign In'
   end
+
+  it 'username is displayed with posts' do
+    create_post
+    expect(page).to have_content '@user_name'
+  end
 end
 
 context "users' posts" do

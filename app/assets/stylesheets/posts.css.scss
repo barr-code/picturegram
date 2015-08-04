@@ -50,14 +50,19 @@ body {
 }
 
 .post_display {
+  margin: auto;
+  width: 90%;
   margin-bottom: 5%;
   .post_image{
     img{
-      width: 90%;
+      width: 100%;
       margin-bottom: 5px;
     }
   }
   .post_buttons, .post_message{
-    display: inline-block;
+    display: inline;
+  }
+  .post_buttons {
+    margin-right: 3%;
   }
 }

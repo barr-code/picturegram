@@ -1,15 +1,17 @@
 -if @posts.any?
   -@posts.each do |post|
-    .post_display.text-center
+    .row.post_display
       .post_image.col-md-12=image_tag(post.image.url(:large))
-      %br
-      .post_message.raleway=post.message
-      .post_buttons
-        -if can? :update, post
-          =link_to edit_post_path(post), class: "edit-button" do
-            %i.fa.fa-pencil
-        -if can? :destroy, post
-          =link_to post_path(post), method: :delete, class: "delete-button" do
-            %i.fa.fa-trash
+      .col-md-12
+        .pull-right
+          .post_buttons
+            -if can? :update, post
+              =link_to edit_post_path(post), class: "edit-button" do
+                %i.fa.fa-pencil
+            -if can? :destroy, post
+              =link_to post_path(post), method: :delete, class: "delete-button" do
+                %i.fa.fa-trash
+      .col-md-12
+        .post_message.raleway="@#{post.user.username} #{post.message}"
 -else
   %h3 No posts yet.
