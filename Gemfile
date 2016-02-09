@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 gem 'haml'
 gem 'paperclip'
+gem 'mini_magick'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancan'
@@ -46,4 +47,3 @@ gem 'database_cleaner', group: :test
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

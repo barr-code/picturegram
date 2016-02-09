@@ -1,11 +1,11 @@
 = form_for(@post) do |f|
-  #upload
+  #upload.text-center
     = f.label :image, "Upload new photo"
     %br
-    = f.file_field :image
+    .image_upload
+      = f.file_field :image
+    %img.upload_preview{src: ""}
     %br
-    = f.label :message, "Say some words"
-    %br
-    = f.text_field :message
+    = f.text_field :message, label: false, placeholder: "Say some words."
     %br
     = f.submit :value => "Post It!", :class => 'btn btn-primary'
