@@ -3,9 +3,10 @@
     .row.post_display
       .post_image.col-md-12=image_tag(post.image.url(:large))
       .col-md-12
+        -existing_like = post.likes.where(user_id: current_user.id).first if user_signed_in?
         =link_to post_likes_path(post), class: "add-like" do
-          %i.fa.fa-heart-o
-        .total_likes="#{post.likes.count} like"
+          %i.fa{class: existing_like ? "fa-heart" : "fa-heart-o"}
+        .total_likes="#{post.likes.count}"
         .pull-right
           .post_buttons
             -if can? :update, post
