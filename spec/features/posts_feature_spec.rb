@@ -59,13 +59,19 @@ feature 'Posts' do
     scenario 'editing message' do
       visit '/'
       page.find('.edit-button').click
-      fill_in 'Say some words', with: 'Ferroequinology'
+      fill_in 'Say some words.', with: 'Ferroequinology'
       click_button 'Post It!'
       expect(page).not_to have_content 'Hogwarts Express'
       expect(page).to have_content 'Ferroequinology'
     end
+  end
 
-    scenario 'liking post', :js => true do
+  context 'liking posts' do
+    before do
+      Post.create(message: 'Hogwarts Express! (Glenfinnan viaduct)', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+    end
+
+    scenario 'liking post', js: true do
       visit '/'
       expect(lambda{page.find('.add-like').click}).to change{Like.count}.by 1
     end

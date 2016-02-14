@@ -11,6 +11,6 @@ end
 def create_post
   visit new_post_path
   attach_file 'Upload new photo', 'spec/fixtures/glenfinnan.jpg'
-  fill_in 'Say some words', with: 'Hogwarts Express. Choo choo!'
+  fill_in 'Say some words.', with: 'Hogwarts Express. Choo choo!'
   click_button 'Post It!'
 end
