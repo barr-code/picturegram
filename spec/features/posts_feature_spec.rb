@@ -78,6 +78,14 @@ feature 'Posts' do
         wait_for_ajax
         expect(@post.likes.count).to eq 1
       end
+
+      scenario 'cannot like same post more than once', js: true do
+        Like.create(post_id: @post.id, user_id: User.last.id)
+        visit '/'
+        find('.add-like').click
+        wait_for_ajax
+        expect(@post.likes.count).to eq 1
+      end
     end
   end
 end
