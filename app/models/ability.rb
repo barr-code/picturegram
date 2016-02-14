@@ -10,6 +10,7 @@ class Ability
       can :read, :all
       can :create, Post
       can [:update, :destroy], Post, :user_id => user.id
+      can :create, Like
     end
   end
 end
