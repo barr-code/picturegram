@@ -6,6 +6,9 @@ class LikesController < ApplicationController
       if !existing_like
         Like.create(post_id: @post.id, user_id: current_user.id)
         liked = true
+      else
+        existing_like.destroy!
+        liked = false
       end
     end
     render json: { new_like_count: @post.likes.count, liked: liked }

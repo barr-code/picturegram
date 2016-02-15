@@ -80,12 +80,13 @@ feature 'Posts' do
         expect(page).to have_selector '.fa-heart'
       end
 
-      scenario 'cannot like same post more than once', js: true do
+      scenario 'clicking like for second time unlikes post', js: true do
         Like.create(post_id: @post.id, user_id: User.last.id)
         visit '/'
         find('.add-like').click
         wait_for_ajax
-        expect(@post.likes.count).to eq 1
+        expect(@post.likes.count).to eq 0
+        expect(page).to have_selector '.fa-heart-o'
       end
     end
   end

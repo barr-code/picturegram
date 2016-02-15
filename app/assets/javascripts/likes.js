@@ -9,6 +9,9 @@ $(document).ready(function() {
       if(response.liked){
         likeIcon.addClass('fa-heart');
         likeIcon.removeClass('fa-heart-o');
+      } else {
+        likeIcon.removeClass('fa-heart');
+        likeIcon.addClass('fa-heart-o');
       }
     })
   })
