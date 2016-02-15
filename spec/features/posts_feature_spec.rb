@@ -77,6 +77,7 @@ feature 'Posts' do
         find('.add-like').click
         wait_for_ajax
         expect(@post.likes.count).to eq 1
+        expect(page).to have_selector '.fa-heart'
       end
 
       scenario 'cannot like same post more than once', js: true do
