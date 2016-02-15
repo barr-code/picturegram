@@ -4,4 +4,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_many :likes
+
+  def self.filter_by_hashtag(hashtag)
+    return Post.where("message LIKE \"%#{hashtag}%\"").order("created_at DESC").uniq
+  end
 end
