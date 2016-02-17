@@ -89,6 +89,24 @@ feature 'Posts' do
         expect(page).to have_selector '.fa-heart-o'
       end
     end
+
+    context 'searching for posts' do
+      scenario 'search box on the page' do
+        visit '/'
+        expect(page).to have_selector '.search-box'
+        expect(page).to have_selector '.fa-search'
+      end
+
+      scenario 'searching for a hashtag' do
+        post_1 = Post.create(message: 'Hogwarts Express! #scotland', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+        post_2 = Post.create(message: 'No hashtags', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+        visit '/'
+        fill_in "search", with: "scotland"
+        page.find('.search-btn').click
+        expect(page).to have_content "Hogwarts Express!"
+        expect(page).not_to have_content "No hashtags"
+      end
+    end
   end
 end
 feature 'signed out users' do

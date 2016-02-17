@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.order("id DESC")
+    search = params[:search] if params[:search] && !params[:search].blank?
+    if search
+      @posts = Post.filter_by_hashtag(search)
+    else
+      @posts = Post.order("id DESC")
+    end
   end
 
   def show
