@@ -21,6 +21,8 @@
               =link_to post_path(post), method: :delete, class: "delete-button" do
                 %i.fa.fa-trash
       .col-md-12
-        .post_message.raleway="@#{post.user.username} #{post.message}"
+        .post_message.raleway
+          ="@#{post.user.username} "
+          = hashtagify(post.message).html_safe
 -else
   %h3 No posts yet.

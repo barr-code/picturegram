@@ -97,14 +97,25 @@ feature 'Posts' do
         expect(page).to have_selector '.fa-search'
       end
 
-      scenario 'searching for a hashtag' do
-        post_1 = Post.create(message: 'Hogwarts Express! #scotland', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
-        post_2 = Post.create(message: 'No hashtags', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
-        visit '/'
-        fill_in "search", with: "scotland"
-        page.find('.search-btn').click
-        expect(page).to have_content "Hogwarts Express!"
-        expect(page).not_to have_content "No hashtags"
+      context 'displaying posts' do
+        before do
+          post_1 = Post.create(message: 'Hogwarts Express! #scotland', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+          post_2 = Post.create(message: 'No hashtags', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+          visit '/'
+        end
+
+        scenario 'searching for a hashtag' do
+          fill_in "search", with: "scotland"
+          page.find('.search-btn').click
+          expect(page).to have_content "Hogwarts Express!"
+          expect(page).not_to have_content "No hashtags"
+        end
+
+        scenario 'clicking on a hashtag' do
+          click_link '#scotland'
+          expect(page).to have_content "Hogwarts Express!"
+          expect(page).not_to have_content "No hashtags"
+        end
       end
     end
   end
