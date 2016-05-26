@@ -11,6 +11,7 @@ class Ability
       can :create, Post
       can [:update, :destroy], Post, :user_id => user.id
       can :create, Like
+      can :destroy, Comment, :user_id => user.id
     end
   end
 end

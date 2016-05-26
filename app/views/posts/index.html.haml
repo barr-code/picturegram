@@ -37,5 +37,9 @@
           .row.post_message.raleway
             = "@#{comment.user.username}: "
             = hashtagify(comment.content).html_safe
+            -if can? :destroy, comment
+              .pull-right
+                = link_to comment_path(comment), class: 'delete-comment' do
+                  %i.fa.fa-times
 -else
   %h3 No posts yet.

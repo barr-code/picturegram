@@ -97,6 +97,14 @@ feature 'Posts' do
         expect(page).to have_content 'Very nice!'
         expect(@post.comments.last.user_id).to eq User.last.id
       end
+
+      scenario 'deleting a comment on posts', js: true do
+        Comment.create(content: 'Very nice!', post_id: @post.id, user_id: User.last.id)
+        visit '/'
+        find('.delete-comment').click
+        expect(@post.comments.count).to eq 0
+        expect(page).not_to have_content 'Very nice!'
+      end
     end
 
     context 'searching for posts' do
@@ -152,5 +160,11 @@ feature 'signed out users' do
   scenario 'comments controller does not create comment without user id' do
     page.driver.post("/comments", comment: {content: "Can't comment!", post_id: @post.id})
     expect(@post.comments.count).to eq 0
+  end
+
+  scenario 'cannot delete other user\'s comment' do
+    Comment.create(content: 'Cannot delete me!', user_id: @user.id, post_id: @post.id)
+    visit '/'
+    expect(page).not_to have_selector '.delete-comment'
   end
 end
