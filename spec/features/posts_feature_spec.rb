@@ -141,4 +141,16 @@ feature 'signed out users' do
     wait_for_ajax
     expect(@post.likes.count).to eq 0
   end
+
+  scenario 'cannot leave a comment', js: true do
+    visit '/'
+    find('.add-comment').click
+    text_disabled = find('.new_comment')[:disabled]
+    expect(text_disabled).to be true
+  end
+
+  scenario 'comments controller does not create comment without user id' do
+    page.driver.post("/comments", comment: {content: "Can't comment!", post_id: @post.id})
+    expect(@post.comments.count).to eq 0
+  end
 end

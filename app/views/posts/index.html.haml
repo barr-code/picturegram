@@ -30,8 +30,8 @@
           = hashtagify(post.message).html_safe
       .col-md-12.comment_form
         %form
-          %textarea.new_comment{name: "new-comment", data: { post_id: post.id, user_id: (current_user.id if current_user) }}
-          %i.fa.fa-comment.submit-comment
+          %textarea.new_comment{name: "new-comment", placeholder: ("You must be signed in to comment." unless current_user), data: { post_id: post.id, user_id: (current_user.id if current_user) }, disabled: !current_user}
+          %i.fa.fa-comment.submit-comment{disabled: !current_user}
       .col-md-12.photo_comments
         - post.comments.each do |comment|
           .row.post_message.raleway
