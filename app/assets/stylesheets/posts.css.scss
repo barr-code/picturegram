@@ -5,7 +5,7 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:500,400,200);
 
 body {
-  h2, .raleway{
+  h2, .raleway {
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
   }
@@ -17,6 +17,7 @@ body {
   }
   background-color: #E4E7E9 !important;
 }
+
 #main-nav {
   position: fixed;
   width: 100%;
@@ -31,10 +32,10 @@ body {
   .btn {
     margin-top: -65px;
   }
-  #home_button{
+  #home_button {
     color: white;
   }
-  #home_button:hover{
+  #home_button:hover {
     text-decoration: none;
   }
   i {
@@ -43,7 +44,7 @@ body {
   }
 }
 
-.content{
+.content {
   background-color: #F4F5F6 !important;
   padding-top: 100px;
   min-height: 1000px;
@@ -53,13 +54,13 @@ body {
   margin: auto;
   width: 90%;
   margin-bottom: 5%;
-  .post_image{
-    img{
+  .post_image {
+    img {
       width: 100%;
       margin-bottom: 5px;
     }
   }
-  .post_buttons, .post_message{
+  .post_buttons, .post_message {
     display: inline;
   }
   .post_buttons {
@@ -74,4 +75,8 @@ body {
 
 .upload_preview {
   max-height: 200px;
+}
+
+.total_likes {
+  margin-right: 5px;
 }

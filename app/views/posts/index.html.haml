@@ -7,11 +7,15 @@
   -@posts.each do |post|
     .row.post_display
       .post_image.col-md-12=image_tag(post.image.url(:large))
-      .col-md-12
-        -existing_like = post.likes.where(user_id: current_user.id).first if user_signed_in?
-        =link_to post_likes_path(post), class: "add-like" do
-          %i.fa{class: existing_like ? "fa-heart" : "fa-heart-o"}
-        .total_likes="#{post.likes.count}"
+      .col-md-6
+        .pull-left
+          -existing_like = post.likes.where(user_id: current_user.id).first if user_signed_in?
+          .pull-left.total_likes="#{post.likes.count}"
+          =link_to post_likes_path(post), class: "add-like" do
+            %i.fa{class: existing_like ? "fa-heart" : "fa-heart-o"}
+          =link_to "#", class: "add-comment" do
+            %i.fa.fa-comment-o
+      .col-md-6
         .pull-right
           .post_buttons
             -if can? :update, post
@@ -24,5 +28,14 @@
         .post_message.raleway
           ="@#{post.user.username} "
           = hashtagify(post.message).html_safe
+      .col-md-12.comment_form
+        %form
+          %textarea.new_comment{name: "new-comment", data: { post_id: post.id, user_id: (current_user.id if current_user) }}
+          %i.fa.fa-comment.submit-comment
+      .col-md-12.photo_comments
+        - post.comments.each do |comment|
+          .row.post_message.raleway
+            = "@#{comment.user.username}: "
+            = hashtagify(comment.content).html_safe
 -else
   %h3 No posts yet.

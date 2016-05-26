@@ -67,13 +67,13 @@ feature 'Posts' do
       end
     end
 
-    context 'liking posts' do
+    context 'interacting with posts' do
       before do
         @post = Post.create(message: 'Hogwarts Express! (Glenfinnan viaduct)', image: File.open("#{Rails.root}/spec/fixtures/glenfinnan.jpg"), user_id: User.last.id)
+        visit '/'
       end
 
       scenario 'liking post', js: true do
-        visit '/'
         find('.add-like').click
         wait_for_ajax
         expect(@post.likes.count).to eq 1
@@ -82,11 +82,20 @@ feature 'Posts' do
 
       scenario 'clicking like for second time unlikes post', js: true do
         Like.create(post_id: @post.id, user_id: User.last.id)
-        visit '/'
         find('.add-like').click
         wait_for_ajax
         expect(@post.likes.count).to eq 0
         expect(page).to have_selector '.fa-heart-o'
+      end
+
+      scenario 'comment on posts', js: true do
+        find('.add-comment').click
+        fill_in 'new-comment', with: 'Very nice!'
+        find('.submit-comment').click
+        wait_for_ajax
+        expect(@post.comments.count).to eq 1
+        expect(page).to have_content 'Very nice!'
+        expect(@post.comments.last.user_id).to eq User.last.id
       end
     end
 
