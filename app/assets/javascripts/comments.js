@@ -1,4 +1,12 @@
 $(document).ready(function() {
+  $('.comment_form').hide();
+
+  $('.add-comment').on('click', function(event){
+    event.preventDefault();
+    var form = $(this).parents().siblings('.comment_form')
+    $(form).show();
+  })
+
   $('.submit-comment').on('click', function(event){
     event.preventDefault();
     var comment = $(this).siblings('.new_comment')
@@ -17,6 +25,8 @@ $(document).ready(function() {
       var content = response.content
       var formattedContent = '<div class="row post_message raleway">' + username + ': ' + content + '</div>'
       $(commentList).append(formattedContent)
+      $(comment).val('')
+      $(comment).hide()
     })
   })
 })

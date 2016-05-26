@@ -11,6 +11,7 @@ An Instagram clone. For uploading and sharing images from the web.
 - CSS
 - Bootstrap
 - Javascript/jQuery
+- Paperclip
 ```
 
 #### Feast Your Eyes
