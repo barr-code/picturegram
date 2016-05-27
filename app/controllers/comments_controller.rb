@@ -12,7 +12,11 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy!
-    render json: nil, status: :ok
+    if current_user && comment && comment.user_id == current_user.id
+      comment.destroy!
+      render json: nil, status: :ok
+    else
+      render json: nil, status: :error
+    end
   end
 end
