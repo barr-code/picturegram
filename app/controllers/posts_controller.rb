@@ -9,10 +9,24 @@ class PostsController < ApplicationController
     else
       @posts = Post.order("id DESC")
     end
+    respond_to do |format|
+      format.json { render json: {posts: @posts.distinct} }
+      format.html { render 'index'}
+    end
   end
 
   def new
     @post = Post.new
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.json { render json: {
+        post: @post, comments: @post.comments, likes: @post.likes}
+      }
+      format.html { render 'index' }
+    end
   end
 
   def edit

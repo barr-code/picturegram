@@ -3,9 +3,11 @@
     = text_field_tag :search, params[:search], :placeholder=> "Search", class: "search-box", id: "search"
     = button_tag(type: "submit", class: "btn search-btn") do
       %i.fa.fa-search
--if @posts.any?
-  -@posts.each do |post|
-    %post-display{post: post.to_json}
+
+%post-list
+-# -if @posts.any?
+-#   -@posts.each do |post|
+-#     %post-display{post: post.to_json}
     -# .row.post_display
     -#   .post_image.col-md-12=image_tag(post.image.url(:large))
     -#   .col-md-6
@@ -42,5 +44,5 @@
     -#           .pull-right
     -#             = link_to comment_path(comment), class: 'delete-comment' do
     -#               %i.fa.fa-times
--else
-  %h3 No posts yet.
+-# -else
+-#   %h3 No posts yet.
