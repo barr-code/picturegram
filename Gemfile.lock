@@ -27,6 +27,11 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    angular-rails-templates (0.2.0)
+      railties (>= 3.1)
+      sprockets (~> 2)
+      tilt
+    angularjs-rails (1.5.6)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
     builder (3.2.2)
@@ -82,6 +87,7 @@ GEM
     minitest (5.7.0)
     multi_json (1.11.1)
     mysql2 (0.3.18)
+    ng-rails-csrf (0.1.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -180,6 +186,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
+  angularjs-rails
   cancan
   capybara
   coffee-rails (~> 4.0.0)
@@ -191,6 +199,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mysql2
+  ng-rails-csrf
   paperclip
   poltergeist
   rails (= 4.1.1)

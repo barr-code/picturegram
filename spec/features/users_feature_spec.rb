@@ -59,4 +59,23 @@ context "users' posts" do
       expect(page).not_to have_css('.edit-button')
     end
   end
+
+  context 'viewing a user\'s page' do
+    before do
+      sign_up
+      @user = User.last
+    end
+
+    it 'there is a link to edit user info' do
+      visit "/users/#{@user.id}"
+      expect(page).to have_link 'Edit Profile'
+    end
+
+    it 'this is a bio and an age displayed' do
+      @user.update(birthday: Time.new(1990, 8, 29), bio: "Bears. Beets. Battlestar Galactica.")
+      visit "/users/#{@user.id}"
+      expect(page).to have_content '25'
+      expect(page).to have_content 'Bears. Beets.'
+    end
+  end
 end

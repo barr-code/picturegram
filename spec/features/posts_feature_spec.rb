@@ -137,6 +137,7 @@ feature 'Posts' do
     end
   end
 end
+
 feature 'signed out users' do
   before do
     @user = User.create(email: "test@test.com", username: "test", password: "password")
@@ -158,8 +159,7 @@ feature 'signed out users' do
   end
 
   scenario 'comments controller does not create comment without user id' do
-    page.driver.post("/comments", comment: {content: "Can't comment!", post_id: @post.id})
-    expect(@post.comments.count).to eq 0
+    expect( lambda {page.driver.post("/comments", comment: {content: "Can't comment!", post_id: @post.id})} ).to change(Post, :count).by 0
   end
 
   scenario 'cannot delete other user\'s comment' do

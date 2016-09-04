@@ -21,6 +21,12 @@ gem 'devise'
 gem 'cancan'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+#AngularJS
+gem 'angularjs-rails'
+gem 'ng-rails-csrf'
+gem 'angular-rails-templates'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
